@@ -1,4 +1,5 @@
 import express from 'express';
+<<<<<<< HEAD
 import cors from 'cors';
 import { errorMiddleware } from '@packages/error-handler/error-middleware';
 import cookieParser from 'cookie-parser';
@@ -18,10 +19,19 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser())
 
+=======
+
+const host = process.env.HOST ?? 'localhost';
+const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+
+const app = express();
+
+>>>>>>> cc3b075 (Initial commit)
 app.get('/', (req, res) => {
     res.send({ 'message': 'Hello API'});
 });
 
+<<<<<<< HEAD
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get("/docs-json", (req, res) => { 
     res.json(swaggerDocument);
@@ -42,3 +52,8 @@ server.on('error', (err) => {
     console.error("Server Error: ", err);
 });
 
+=======
+app.listen(port, host, () => {
+    console.log(`[ ready ] http://${host}:${port}`);
+});
+>>>>>>> cc3b075 (Initial commit)

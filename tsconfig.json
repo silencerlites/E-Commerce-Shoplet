@@ -8,6 +8,7 @@
     },
     {
       "path": "./apps/auth-service"
+<<<<<<< HEAD
     },
     {
       "path": "./apps/api-gateway"
@@ -26,6 +27,8 @@
     },
     {
       "path": "./apps/oder-service"
+=======
+>>>>>>> cc3b075 (Initial commit)
     }
   ]
 }

@@ -5,10 +5,14 @@
     "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
+<<<<<<< HEAD
     "baseUrl": ".",
     "lib": [
       "es2022"
     ],
+=======
+    "lib": ["es2022"],
+>>>>>>> cc3b075 (Initial commit)
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "noEmitOnError": true,
@@ -19,6 +23,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
+<<<<<<< HEAD
     "paths": {
       "@packages/*": [
         "packages/*"
@@ -27,5 +32,8 @@
     "customConditions": [
       "development"
     ]
+=======
+    "customConditions": ["development"]
+>>>>>>> cc3b075 (Initial commit)
   }
 }

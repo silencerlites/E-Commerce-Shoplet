@@ -42,6 +42,7 @@
       "exclude": [
         "apps/auth-service-e2e/**/*"
       ]
+<<<<<<< HEAD
     },
     {
       "plugin": "@nx/webpack/plugin",
@@ -63,6 +64,8 @@
         "buildDepsTargetName": "build-deps",
         "watchDepsTargetName": "watch-deps"
       }
+=======
+>>>>>>> cc3b075 (Initial commit)
     }
   ],
   "targetDefaults": {
@@ -81,6 +84,7 @@
         "^build"
       ]
     }
+<<<<<<< HEAD
   },
   "generators": {
     "@nx/next": {
@@ -89,5 +93,7 @@
         "linter": "none"
       }
     }
+=======
+>>>>>>> cc3b075 (Initial commit)
   }
 }

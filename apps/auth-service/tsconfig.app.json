@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+<<<<<<< HEAD
     "outDir": "out-tsc/@shoplet/auth-service",
     "types": [
       "node",
@@ -12,6 +13,17 @@
   "include": [
     "src/**/*.ts",
     "../../packages/**/*.ts",
+=======
+    "outDir": "dist",
+    "types": [
+      "node"
+    ],
+    "rootDir": "src",
+    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
+  },
+  "include": [
+    "src/**/*.ts"
+>>>>>>> cc3b075 (Initial commit)
   ],
   "exclude": [
     "out-tsc",

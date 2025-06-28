@@ -44,6 +44,7 @@ Thumbs.db
 .github/instructions/nx.instructions.md
 
 test-output
+<<<<<<< HEAD
 
 /generated/prisma
 
@@ -55,3 +56,5 @@ out
 
 # Credentials 
 .env
+=======
+>>>>>>> cc3b075 (Initial commit)
