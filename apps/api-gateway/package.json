@@ -1,0 +1,35 @@
+{
+  "name": "@shoplet/api-gateway",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@shoplet/api-gateway:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@shoplet/api-gateway:build:development"
+          },
+          "production": {
+            "buildTarget": "@shoplet/api-gateway:build:production"
+          }
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express-http-proxy": "^1.6.6",
+    "@types/morgan": "^1.9.10",
+    "@types/swagger-ui-express": "^4.1.8"
+  }
+}
