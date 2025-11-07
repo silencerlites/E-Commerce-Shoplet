@@ -43,6 +43,9 @@
         "apps/auth-service-e2e/**/*"
       ]
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
     },
     {
       "plugin": "@nx/webpack/plugin",
@@ -64,8 +67,11 @@
         "buildDepsTargetName": "build-deps",
         "watchDepsTargetName": "watch-deps"
       }
+<<<<<<< HEAD
 =======
 >>>>>>> cc3b075 (Initial commit)
+=======
+>>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
     }
   ],
   "targetDefaults": {
@@ -85,6 +91,9 @@
       ]
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
   },
   "generators": {
     "@nx/next": {
@@ -93,7 +102,10 @@
         "linter": "none"
       }
     }
+<<<<<<< HEAD
 =======
 >>>>>>> cc3b075 (Initial commit)
+=======
+>>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
   }
 }

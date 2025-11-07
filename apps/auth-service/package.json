@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "scripts": {
     "dev": "node src/main.ts"
   },
@@ -13,49 +14,22 @@
     "targets": {
       "serve": {
 =======
+=======
+  "scripts": {
+    "dev": "node src/main.ts"
+  },
+>>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
   "nx": {
+    "name": "@shoplet/auth-service",
+    "projectType": "application",
+    "sourceRoot": "@shoplet/auth-service/src",
     "targets": {
-      "build": {
-        "executor": "@nx/esbuild:esbuild",
-        "outputs": [
-          "{options.outputPath}"
-        ],
-        "defaultConfiguration": "production",
-        "options": {
-          "platform": "node",
-          "outputPath": "apps/auth-service/dist",
-          "format": [
-            "cjs"
-          ],
-          "bundle": false,
-          "main": "apps/auth-service/src/main.ts",
-          "tsConfig": "apps/auth-service/tsconfig.app.json",
-          "assets": [
-            "apps/auth-service/src/assets"
-          ],
-          "esbuildOptions": {
-            "sourcemap": true,
-            "outExtension": {
-              ".js": ".js"
-            }
-          }
-        },
-        "configurations": {
-          "development": {},
-          "production": {
-            "generateLockfile": true,
-            "esbuildOptions": {
-              "sourcemap": false,
-              "outExtension": {
-                ".js": ".js"
-              }
-            }
-          }
-        }
-      },
       "serve": {
+<<<<<<< HEAD
         "continuous": true,
 >>>>>>> cc3b075 (Initial commit)
+=======
+>>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
         "executor": "@nx/js:node",
         "defaultConfiguration": "development",
         "dependsOn": [
@@ -79,6 +53,7 @@
           "passWithNoTests": true
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       },
       "docker-build": {
@@ -87,6 +62,8 @@
         ],
         "command": "docker build -f apps/auth-service/Dockerfile . -t shoplet-auth-service"
 >>>>>>> cc3b075 (Initial commit)
+=======
+>>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
       }
     }
   }

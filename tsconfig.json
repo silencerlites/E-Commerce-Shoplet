@@ -8,27 +8,6 @@
     },
     {
       "path": "./apps/auth-service"
-<<<<<<< HEAD
-    },
-    {
-      "path": "./apps/api-gateway"
-    },
-    {
-      "path": "./apps/user-ui"
-    },
-    {
-      "path": "./apps/seller-ui"
-    },
-    {
-      "path": "./apps/product-service"
-    },
-    {
-      "path": "./apps/kafka-service"
-    },
-    {
-      "path": "./apps/oder-service"
-=======
->>>>>>> cc3b075 (Initial commit)
     }
   ]
 }
