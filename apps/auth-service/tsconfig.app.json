@@ -1,8 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "outDir": "out-tsc/@shoplet/auth-service",
     "types": [
       "node",
@@ -14,26 +12,6 @@
   "include": [
     "src/**/*.ts",
     "../../packages/**/*.ts",
-=======
-    "outDir": "dist",
-=======
-    "outDir": "out-tsc/@shoplet/auth-service",
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
-    "types": [
-      "node",
-      "express"
-    ],
-    "rootDir": "../../",
-    "tsBuildInfoFile": "out-tsc/@shoplet/auth-service/tsconfig.app.tsbuildinfo"
-  },
-  "include": [
-<<<<<<< HEAD
-    "src/**/*.ts"
->>>>>>> cc3b075 (Initial commit)
-=======
-    "src/**/*.ts",
-    "../../packages/**/*.ts",
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
   ],
   "exclude": [
     "out-tsc",

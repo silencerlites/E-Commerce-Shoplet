@@ -1,16 +1,21 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "./out-tsc/jest",
     "types": [
-      "node",
-      "express"
-    ],
-    "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
+      "jest",
+      "node"
+    ]
   },
   "include": [
-    "src/**/*.ts"
+    "jest.config.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
   ],
-  "exclude": []
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }
