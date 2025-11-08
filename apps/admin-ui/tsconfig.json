@@ -28,17 +28,19 @@
       ]
     },
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": "../../",
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
+    "../../apps/seller-ui/.next/types/**/*.ts",
+    "../../packages/**/*.tsx",
+    "../../dist/apps/seller-ui/.next/types/**/*.ts",
+    "next-env.d.ts",
     "src/**/*.js",
     "src/**/*.jsx",
-    "../../apps/admin-ui/.next/types/**/*.ts",
-    "../../dist/apps/admin-ui/.next/types/**/*.ts",
-    "next-env.d.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "out-tsc",

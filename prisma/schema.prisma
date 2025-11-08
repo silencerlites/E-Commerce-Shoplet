@@ -41,6 +41,8 @@ model users {
 
   // For notifications the user received
   receivedNotifications   notifications[] @relation("NotificationReceiver")
+
+  role        String   @default("user")  
 }
 
 enum addressType {
