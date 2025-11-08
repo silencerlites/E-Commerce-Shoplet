@@ -26,6 +26,12 @@
     },
     {
       "path": "./apps/oder-service"
+    },
+    {
+      "path": "./apps/admin-service"
+    },
+    {
+      "path": "./apps/admin-ui"
     }
   ]
 }

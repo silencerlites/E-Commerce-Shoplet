@@ -44,11 +44,6 @@ Thumbs.db
 .github/instructions/nx.instructions.md
 
 test-output
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
-
 /generated/prisma
 
 /generated/prisma
@@ -58,10 +53,4 @@ test-output
 out
 
 # Credentials 
-<<<<<<< HEAD
 .env
-=======
->>>>>>> cc3b075 (Initial commit)
-=======
-.env
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
