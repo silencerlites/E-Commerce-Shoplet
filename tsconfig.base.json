@@ -5,20 +5,10 @@
     "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
     "baseUrl": ".",
     "lib": [
       "es2022"
     ],
-<<<<<<< HEAD
-=======
-    "lib": ["es2022"],
->>>>>>> cc3b075 (Initial commit)
-=======
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "noEmitOnError": true,
@@ -29,10 +19,6 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
     "paths": {
       "@packages/*": [
         "packages/*"
@@ -41,11 +27,5 @@
     "customConditions": [
       "development"
     ]
-<<<<<<< HEAD
-=======
-    "customConditions": ["development"]
->>>>>>> cc3b075 (Initial commit)
-=======
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
   }
 }

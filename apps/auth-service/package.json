@@ -2,8 +2,6 @@
   "name": "@shoplet/auth-service",
   "version": "0.0.1",
   "private": true,
-<<<<<<< HEAD
-<<<<<<< HEAD
   "scripts": {
     "dev": "node src/main.ts"
   },
@@ -13,23 +11,6 @@
     "sourceRoot": "@shoplet/auth-service/src",
     "targets": {
       "serve": {
-=======
-=======
-  "scripts": {
-    "dev": "node src/main.ts"
-  },
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
-  "nx": {
-    "name": "@shoplet/auth-service",
-    "projectType": "application",
-    "sourceRoot": "@shoplet/auth-service/src",
-    "targets": {
-      "serve": {
-<<<<<<< HEAD
-        "continuous": true,
->>>>>>> cc3b075 (Initial commit)
-=======
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
         "executor": "@nx/js:node",
         "defaultConfiguration": "development",
         "dependsOn": [
@@ -52,18 +33,6 @@
         "options": {
           "passWithNoTests": true
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      },
-      "docker-build": {
-        "dependsOn": [
-          "build"
-        ],
-        "command": "docker build -f apps/auth-service/Dockerfile . -t shoplet-auth-service"
->>>>>>> cc3b075 (Initial commit)
-=======
->>>>>>> 3ebf8ac (Shoplet Base Code w/ 7 Service Apps)
       }
     }
   }
