@@ -643,6 +643,19 @@ export const loginAdmin = async (req: Request, res: Response, next: NextFunction
     }
 }
 
+// get logged in Admin
+export const getAdmin = async (req: any, res: Response, next: NextFunction) => {
+    try {
+        const user = req.user;
+        res.status(201).json({
+            success: true,
+            user,
+        });
+
+    } catch (error) {
+        next(error);
+    }
+}
 
 
 
