@@ -11,7 +11,11 @@ import initializeConfig from './libs/initializeSiteConfig';
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002"],
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:3002",
+  ],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
@@ -22,7 +26,7 @@ app.use(express.urlencoded({ limit: '100mb', extended: true }));
 app.use(cookieParser());
 app.set("trust proxy", 1);
 
-// Apply rate limiting
+// Apply rate limiting 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: (req: any) => (req.user ? 100 : 10), // limit each IP to 100 requests
