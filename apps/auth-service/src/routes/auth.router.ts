@@ -29,7 +29,7 @@ router.post("/login-seller", loginSeller)
 router.get("/logged-in-seller", isAuthenticated, isSeller, getSeller);
 
 router.post("/login-admin", loginAdmin);
-router.get("/logged-in-admin", isAuthenticated, getAdmin);
+router.get("/logged-in-admin", isAuthenticated, isAdmin, getAdmin);
 
 
 

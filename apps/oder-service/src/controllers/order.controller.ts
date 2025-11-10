@@ -10,8 +10,6 @@ import { Prisma } from "@prisma/client";
 import { sendEmail } from "../utils/send-mail";
 
 
-
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2025-06-30.basil" });
 
 //  create payment intent
@@ -576,5 +574,17 @@ export const getUserOrders = async (req: any, res: Response, next: NextFunction)
         
     } catch (error) {
         return next(error);
+    }
+}
+
+// get admin order
+export const getAdminOrders = async (req: any, res: Response, next: NextFunction) => {
+    try {
+        // Fetch all orders
+        const orders = await prisma.orders.findMany({ include: { user: true, shop: true,}, orderBy: { createdAt: "desc" } });
+
+       res.status(200).json({ success: true, orders });
+    } catch (error) {
+        next(error)
     }
 }

@@ -5,8 +5,23 @@ import { useRouter } from "next/navigation";
 
 // fetch admin data from API
 const fetchAdmin = async () => {
+    try {
     const response = await axiosInstance.get("/api/logged-in-admin");
-    return response.data.user;
+
+    // Log it once to confirm structure
+    console.log("Admin response:", response.data);
+
+    // Ensure the function never returns undefined
+    if (response.data && response.data.admin) {
+      return response.data.admin;
+    }
+
+    // Throw an error so React Query can handle it instead of returning undefined
+    throw new Error("Admin data missing in response");
+  } catch (error) {
+    // Let React Query handle the error state
+    throw error;
+  }
 }
 
 const useAdmin = () => {
@@ -23,13 +38,13 @@ const useAdmin = () => {
         
     });
 
-    const history = useRouter();
+    const router = useRouter();
 
     useEffect(() => {
         if (!isLoading && !admin) {
-            history.push("/");
+            router.push("/");
         }
-    }, [admin, isLoading]);
+    }, [admin, isLoading, isError]);
 
     return { admin, isLoading, isError, refetch };
 };

@@ -646,10 +646,12 @@ export const loginAdmin = async (req: Request, res: Response, next: NextFunction
 // get logged in Admin
 export const getAdmin = async (req: any, res: Response, next: NextFunction) => {
     try {
-        const user = req.user;
+         if (!req.user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
         res.status(201).json({
             success: true,
-            user,
+            admin: req.user,
         });
 
     } catch (error) {
