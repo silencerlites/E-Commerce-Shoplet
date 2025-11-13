@@ -65,13 +65,6 @@ const SidebarWrapper = () => {
                 href='/dashboard/products'
                 icon={<PackageSearch fill={getIconColor("/dashboard/products")} />}
               />
-              
-              <SidebarItem
-                isActive={activeSideBar === "/dashbord/events"}
-                title='Events'
-                href='/dashboard/events'
-                icon={<BellPlus fill={getIconColor("/dashboard/events")} />}
-              />
 
                <SidebarItem
                 isActive={activeSideBar === "/dashbord/events"}
