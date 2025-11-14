@@ -95,7 +95,9 @@ const initializeConfig = async () => {
                       "Bakery",
                       "Snacks",
                       "Beverages", ],
-                  }
+                  },
+                  logo:"",
+                  banner: "",
                 }
             });
         }
