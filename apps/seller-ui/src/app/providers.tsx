@@ -2,14 +2,33 @@
 
 import React, { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { WebSocketProvider } from '../context/web-socket-context'
+import useSeller from '../hooks/useSeller'
 
-const Providers = ({children}: {children: React.ReactNode}) => {
-    const [queryClient] = useState(() => new QueryClient())
+const Provider = ({ children }: { children: React.ReactNode }) => {
+  const [queryClient] = useState(() => new QueryClient())
+
   return (
     <QueryClientProvider client={queryClient}>
-        {children}
+      <ProviderWithWebSocket>{children}</ProviderWithWebSocket>
     </QueryClientProvider>
   )
 }
 
-export default Providers
+const ProviderWithWebSocket = ({ children }: { children: React.ReactNode }) => {
+  const { seller, isLoading } = useSeller()
+
+  // Prevent infinite API calls
+  if (isLoading) return null
+
+  // Only mount websocket when seller exists
+  if (!seller) return <>{children}</>
+
+  return (
+    <WebSocketProvider seller={seller}>
+      {children}
+    </WebSocketProvider>
+  )
+}
+
+export default Provider

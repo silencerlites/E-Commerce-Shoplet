@@ -1,7 +1,6 @@
 "use client"
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import useRequireAuth from 'apps/user-ui/src/hooks/useRequiredAuth';
-import useUser from 'apps/user-ui/src/hooks/useUser';
 import QuickActionCard from 'apps/user-ui/src/shared/components/cards/quick.action-card';
 import StatCard from 'apps/user-ui/src/shared/components/cards/stat-card';
 import ChangePassword from 'apps/user-ui/src/shared/components/change-password';
@@ -14,6 +13,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 
+
 const Page = () => {
 
     const searchParams = useSearchParams();
@@ -21,13 +21,14 @@ const Page = () => {
     const queryClient = useQueryClient();
 
     const { user, isLoading } = useRequireAuth();
-    const { data: orders = []} = useQuery({
+    const { data: orders = [] } = useQuery({
         queryKey: ["user-orders"],
         queryFn: async () => {
             const res = await axiosInstance.get("/order/api/get-user-orders");
             return res.data.orders;
         },
     })
+
     const totalOrders = orders.length;
     const processingOrders = orders.filter((o: any) => o?.deliveryStatus !== "Delivered" && o?.deliveryStatus !== "Cancelled").length;
 
@@ -82,7 +83,12 @@ const Page = () => {
                         <nav className='space-y-2'>
                             <NavItem label="Profile" Icon={User} active={activeTab === 'Profile'} onClick={() => setActiveTab('Profile')} />
                             <NavItem label="My Orders" Icon={ShoppingBag} active={activeTab === 'My Orders'} onClick={() => setActiveTab('My Orders')} />
-                            <NavItem label="Inbox" Icon={Inbox} active={activeTab === 'Inbox'} onClick={() => setActiveTab('Inbox')} />
+                            <NavItem
+                                label="Inbox"
+                                Icon={Inbox}
+                                active={activeTab === 'Inbox'}
+                                onClick={() => router.push('/inbox')}
+                            />
                             <NavItem label="Notifications" Icon={Bell} active={activeTab === 'Notifications'} onClick={() => setActiveTab('Notifications')} />
                             <NavItem label="Shipping Address" Icon={MapPin} active={activeTab === 'Shipping Address'} onClick={() => setActiveTab('Shipping Address')} />
                             <NavItem label="Change Password" Icon={Lock} active={activeTab === 'Change Password'} onClick={() => setActiveTab('Change Password')} />
@@ -98,7 +104,7 @@ const Page = () => {
                         {activeTab === "Profile" && !isLoading && user ? (
                             <div className='space-y-4 text-sm text-gray-700'>
                                 <div className='flex items-center gap-3'>
-                                    <Image src={user?.avatar || "https://ik.imagekit.io/u4a8o785f/products/product-1755587744469_u5hD4YZzj.jpg?updatedAt=1755587746459"} alt='profile' width={60} height={60} className='w-16 h-16 rounded-full border border-gray-200' />
+                                    <Image src={user?.avatar || "https://ik.imagekit.io/u4a8o785f/products/product-1760947357104_zM94niTsN.jpg?updatedAt=1760947360200"} alt='profile' width={60} height={60} className='w-16 h-16 rounded-full border border-gray-200' />
                                     <button className='flex items-center gap-1 text-blue-500 text-xs font-medium'>
                                         <Pencil className='w-4 h-4' /> Change Photo
                                     </button>

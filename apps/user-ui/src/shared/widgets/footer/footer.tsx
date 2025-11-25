@@ -3,8 +3,12 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Facebook, Twitter, Linkedin, Mail, MapPin, ArrowUp } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  if(pathname === "/inbox") return null;
   const [showTopBtn, setShowTopBtn] = useState(false)
 
   // Show back-to-top button after scrolling 300px

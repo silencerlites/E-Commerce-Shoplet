@@ -86,7 +86,7 @@ model shops {
   name        String
   bio         String?
   category    String
-  avatar      images[]
+  avatar      String?
   coverBanner String?
   address     String
   opening_hours String?
@@ -102,6 +102,8 @@ model shops {
   followers followers[]
 
   orders orders[]
+
+  images images[]
 }
 
 model followers {
@@ -271,3 +273,49 @@ model notifications {
   creator        users?   @relation("NotificationCreator", fields: [creatorId], references: [id])
   receiver       users?   @relation("NotificationReceiver", fields: [receiverId], references: [id])
 }
+
+/// -------------------
+///  Chating Model
+/// -------------------
+
+model conversationGroup {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  isGroup         Boolean @default(false)
+  name            String?
+  creatorId       String
+  participantIds  String[] @db.ObjectId
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model participant {
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  conversationId  String  @db.ObjectId
+  userId          String? @db.ObjectId
+  sellerId        String? @db.ObjectId
+  lastSeenAt      DateTime?
+  isOnline        Boolean @default(false)
+  unreadCount     Int     @default(0)
+  muted           Boolean @default(false)
+  joinedAct       DateTime @default(now())
+}
+
+enum SenderType {
+  user
+  seller
+}
+
+model message {
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  conversationId    String @db.ObjectId
+  senderId          String @db.ObjectId
+  senderType        SenderType
+  content           String?
+  attachments       String[]
+  status            String @default("sent")
+  createdAt         DateTime @default(now())
+
+  @@unique([conversationId, senderId, content, createdAt])
+}
+
+

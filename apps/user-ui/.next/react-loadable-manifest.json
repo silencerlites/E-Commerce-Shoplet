@@ -4,5 +4,23 @@
     "files": [
       "static/chunks/_app-pages-browser_node_modules_next_dist_client_dev_noop-turbopack-hmr_js.js"
     ]
+  },
+  "..\\..\\..\\node_modules\\next\\dist\\client\\index.js -> ../pages/_app": {
+    "id": "..\\..\\..\\node_modules\\next\\dist\\client\\index.js -> ../pages/_app",
+    "files": [
+      "static/chunks/_pages-dir-browser_node_modules_next_dist_pages__app_js.js"
+    ]
+  },
+  "..\\..\\..\\node_modules\\next\\dist\\client\\index.js -> ../pages/_error": {
+    "id": "..\\..\\..\\node_modules\\next\\dist\\client\\index.js -> ../pages/_error",
+    "files": [
+      "static/chunks/_pages-dir-browser_node_modules_next_dist_pages__error_js.js"
+    ]
+  },
+  "shared\\components\\chats\\chatInput.tsx -> emoji-picker-react": {
+    "id": "shared\\components\\chats\\chatInput.tsx -> emoji-picker-react",
+    "files": [
+      "static/chunks/_app-pages-browser_node_modules_emoji-picker-react_dist_emoji-picker-react_esm_js.js"
+    ]
   }
 }
