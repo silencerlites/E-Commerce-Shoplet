@@ -1,0 +1,39 @@
+{
+  "name": "@shoplet/auth-service",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "node src/main.ts"
+  },
+  "nx": {
+    "name": "@shoplet/auth-service",
+    "projectType": "application",
+    "sourceRoot": "@shoplet/auth-service/src",
+    "targets": {
+      "serve": {
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@shoplet/auth-service:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@shoplet/auth-service:build:development"
+          },
+          "production": {
+            "buildTarget": "@shoplet/auth-service:build:production"
+          }
+        }
+      },
+      "test": {
+        "options": {
+          "passWithNoTests": true
+        }
+      }
+    }
+  }
+}
