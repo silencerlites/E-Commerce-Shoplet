@@ -1,21 +1,34 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
+import http from "http";
+import WebSocket from "ws";
+import { clients } from "./log-queue";
+import { startKafkaConsumer } from "./logger-consumer";
 
-import express from 'express';
-import * as path from 'path';
+const server = http.createServer();
+const wsServer = new WebSocket.Server({ noServer: true });
 
-const app = express();
+// WebSocket connection handler
+wsServer.on("connection", (ws) => {
+  clients.add(ws);
+  console.log("New logger client connected, total clients:", clients.size);
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to logger-service!' });
+  ws.on("close", () => {
+    clients.delete(ws);
+    console.log("Logger client disconnected, total clients:", clients.size);
+  });
 });
 
-const port = process.env.PORT || 6008;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+// Handle HTTP upgrade for WebSocket
+server.on("upgrade", (req, socket, head) => {
+  wsServer.handleUpgrade(req, socket, head, (ws) =>
+    wsServer.emit("connection", ws, req)
+  );
 });
-server.on('error', console.error);
+
+server.listen(process.env.PORT || 6008, async () => {
+  console.log(`Listening at http://localhost:6008/api`);
+});
+
+
+
+// Start Kafka consumer
+startKafkaConsumer().catch(console.error);

@@ -11,8 +11,7 @@ const Page = () => {
   const orderId = params.id as string;
 
   const [order, setOrder] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [updating, setUpdating] = useState(false);
+  const [loading, setLoading] = useState(true); 
   const router = useRouter();
 
   const fetchOrder = async () => {
@@ -25,23 +24,6 @@ const Page = () => {
       setLoading(false);
     }
   };
-
-  const handleStatusChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newStatus = e.target.value;
-    setUpdating(true);
-    try {
-      await axiosInstance.put(`/order/api/update-status/${order.id}`, {
-        deliveryStatus: newStatus,
-      });
-      setOrder((prev: any) => ({ ...prev, deliveryStatus: newStatus }));
-    } catch (error) {
-      console.log("Failed to update order status", error);
-    } finally {
-      setUpdating(false);
-    }
-  };
-
-  console.log(order);
 
   useEffect(() => {
     if (orderId) fetchOrder();
@@ -60,47 +42,31 @@ const Page = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-10 text-gray-200">
+
+    <div className="max-w-3xl mx-auto px-6 py-10 ">
       {/* Back Button */}
-      <div className="mb-6 flex items-center gap-2 cursor-pointer" onClick={() => router.push("/dashboard/orders")}>
-        <ArrowLeft className="w-5 h-5 text-gray-400" />
-        <span className="text-sm font-semibold text-gray-300 hover:text-white transition">Go Back to Dashboard</span>
+      <div className="mb-6 flex items-center gap-2 cursor-pointer" onClick={() => router.push("/profile?active=My+Orders")}>
+        <ArrowLeft className="w-5 h-5 " />
+        <span className="text-sm font-semibold  hover:text-white transition">Go Back to Order</span>
+
       </div>
 
       {/* Header */}
       <h1 className="text-2xl font-bold mb-2">Order #{order.id.slice(-6)}</h1>
 
-      {/* Status Selector */}
-      <div className="mb-8">
-        <label className="text-sm text-gray-400 mr-3">Update Delivery Status:</label>
-        <select
-          value={order.deliveryStatus}
-          onChange={handleStatusChange}
-          disabled={updating}
-          className="bg-transparent border border-gray-600 text-gray-200 text-sm rounded-md px-2 py-1 focus:outline-none"
-        >
-          {statuses.map((status) => {
-            const currentIndex = statuses.indexOf(order.deliveryStatus);
-            const statusIndex = statuses.indexOf(status);
-            return (
-              <option key={status} value={status} disabled={statusIndex <= currentIndex}>
-                {status}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-
           {/* Delivery Status */}
           <div className="mb-6">
-            <div className="flex items-center justify-between text-xs font-medium text-gray-500 mb-2">
+            <div className="flex items-center justify-between text-xs font-medium  mb-2">
+
                 {statuses.map((step, idx) => {
                     const current = step === order.deliveryStatus;
                     const passed = statuses.indexOf(order.deliveryStatus) >= idx;
                     return (
                         <div key={step}
                         className={`flex-1 text-left ${
-                            current ? "text-blue-600" : passed ? "text-green-600" : "text-gray-400"
+
+                            current ? "text-blue-600" : passed ? "text-green-600" : "text-gray-900"
+
                         }`}>
                             {step}
                         </div>
@@ -112,9 +78,11 @@ const Page = () => {
                     const reached = idx <= statuses.indexOf(order.deliveryStatus);
                     return (
                         <div key={step} className="flex-1 flex items-center"> 
-                            <div className={`w-4 h-4 rounded-full ${reached ? "bg-blue-600" : "bg-gray-300"}`}/>
+
+                            <div className={`w-4 h-4 rounded-full ${reached ? "bg-blue-600" : "bg-gray-900"}`}/>
                             {idx !== statuses.length - 1 && (
-                                <div className={`flex-1 h-1 ${reached ? "bg-blue-600" : "bg-gray-300"}`}/>
+                                <div className={`flex-1 h-1 ${reached ? "bg-blue-600" : "bg-gray-900"}`}/>
+
                             )}
                         </div>
                     )

@@ -11,12 +11,19 @@ import useLocationTracking from 'apps/user-ui/src/hooks/useLocation';
 import useDeviceTracking from 'apps/user-ui/src/hooks/useDeviceTracking';
 import ProductCard from '../../components/cards/product-card';
 import axiosInstance from 'apps/user-ui/src/utils/axiosInstance';
+import { isProtected } from 'apps/user-ui/src/utils/protected';
+import { useRouter } from 'next/navigation';
+
 
 
 const ProductDetails = ({ productDetails }: { productDetails: any }) => {
     const { user } = useUser();
     const location = useLocationTracking();
     const deviceInfo = useDeviceTracking();
+
+    const router = useRouter();
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const [currentImage, setCurrentImage] = useState(productDetails?.images[0]?.url)
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -66,6 +73,25 @@ const ProductDetails = ({ productDetails }: { productDetails: any }) => {
             
         }
     }
+
+
+     const handleChat = async () => {
+        if (isLoading) {
+            return
+        }
+
+        setIsLoading(true);
+
+        try {
+            const res = await axiosInstance.post("/chatting/api/create-user-conversationGroup", {sellerId: productDetails?.shop?.sellerId }, isProtected);
+            router.push(`/inbox?conversationId=${res.data.conversation.id}`);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
 
     useEffect(() => {
         fetchFilteredProducts()
@@ -289,7 +315,9 @@ const ProductDetails = ({ productDetails }: { productDetails: any }) => {
                                         {productDetails?.shop?.name}
                                     </span>
                                 </div>
-                                <Link href={"#"} className='text-blue-500 text-sm flex items-center gap-1'>
+
+                                <Link href={"#"} className='text-blue-500 text-sm flex items-center gap-1' onClick={() => handleChat()}>
+
                                 <MessageSquareText/>
                                 Chat Now
                                 </Link>
