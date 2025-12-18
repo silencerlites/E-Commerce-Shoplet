@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 import jwt, { JsonWebTokenError } from "jsonwebtoken";
 import { setCookie } from "../utils/cookies/setCookie";
 import Stripe from "stripe";
-import { sendLog } from "../utils/logs/sendLog";
+import { sendLog } from "@packages/utils/logs/send-logs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2025-06-30.basil" });
 
@@ -178,6 +178,17 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
 export const getUser = async (req: any, res: Response, next: NextFunction) => {
     try {
         const user = req.user;
+        try {
+            await sendLog({
+                type: "success",
+                message: `User data retrieved ${user?.email}`,
+                source: "auth-service",
+            });
+            console.log("Test log sent to Kafka from main.ts!");
+        } catch (err) {
+            console.error("Failed to send test log:", err);
+        }
+
         res.status(201).json({
             success: true,
             user,
@@ -603,7 +614,7 @@ export const loginAdmin = async (req: Request, res: Response, next: NextFunction
         const isAdmin = user.role === "admin";
 
         if (!isAdmin) {
-            sendLog({
+            await sendLog({
                 type: "error",
                 message: `Admin login failed for ${email} - not an admin`,
                 source: "auth-service",
@@ -611,7 +622,7 @@ export const loginAdmin = async (req: Request, res: Response, next: NextFunction
             return next(new AuthError("Invalid access!"));
         }
 
-        sendLog({
+        await sendLog({
             type: "success",
             message: `Admin login successful for ${email}`,
             source: "auth-service",
@@ -646,9 +657,9 @@ export const loginAdmin = async (req: Request, res: Response, next: NextFunction
 // get logged in Admin
 export const getAdmin = async (req: any, res: Response, next: NextFunction) => {
     try {
-         if (!req.user) {
-      return res.status(401).json({ message: "Unauthorized" });
-    }
+        if (!req.user) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
         res.status(201).json({
             success: true,
             admin: req.user,
